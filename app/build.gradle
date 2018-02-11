@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion compileTargetSdkVersion
+    defaultConfig {
+        applicationId "xyz.pratham.architecture2018"
+        minSdkVersion buildMinSDKVersion
+        targetSdkVersion compileTargetSdkVersion
+        versionCode buildVersionCode
+        versionName buildVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // ANDROID
+    implementation globalDependencies.appcompat
+    implementation globalDependencies.constraintLayout
+    // DAGGER
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+    compile globalDependencies.dagger
+    compile globalDependencies.daggerAndroid
+    compile globalDependencies.daggerAndroidSupport
+    annotationProcessor globalDependencies.daggerCompiler
+    annotationProcessor globalDependencies.daggerProcessor
+    provided globalDependencies.daggerJavaProcessor
+    compile globalDependencies.daggerJavaInjector
+    // RX JAVA 2
+    compile globalDependencies.rxjava
+    compile globalDependencies.rxandroid
+    compile globalDependencies.rxadapter
+    compile globalDependencies.rxbinding
+    compile globalDependencies.rxlifecyle
+    compile globalDependencies.rxlifecyleComponents
+    // RX BINDING
+    compile globalDependencies.rxBinding
+    // compile globalDependencies.rxBindingS
+    // RX PERMISSION
+    compile globalDependencies.rxPermission
+    // TIMBER
+    compile globalDependencies.timber
+    // FIRE BASE
+    compile globalDependencies.firebaseAuth
+
+    // TESTING
+    testImplementation globalTestDependencies.junit
+    androidTestImplementation globalTestDependencies.runner
+    androidTestImplementation globalTestDependencies.expresso
+}
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'

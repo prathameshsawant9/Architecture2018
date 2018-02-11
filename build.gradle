@@ -1,0 +1,78 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath 'com.google.gms:google-services:3.1.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext{
+    // Android Configuration
+    compileTargetSdkVersion = 26
+    buildMinSDKVersion = 19
+    buildVersionCode = 1
+    buildVersionName = "1.0"
+
+    globalDependencies = [
+            appcompat :"com.android.support:appcompat-v7:26.1.0",
+            constraintLayout: "com.android.support.constraint:constraint-layout:1.0.2",
+
+            // DAGGER 2 DEPENDENCIES
+            dagger : 'com.google.dagger:dagger:2.12',
+            daggerAndroid : 'com.google.dagger:dagger-android:2.12',
+            daggerAndroidSupport : 'com.google.dagger:dagger-android-support:2.12',
+            daggerCompiler : 'com.google.dagger:dagger-compiler:2.12',
+            daggerProcessor : 'com.google.dagger:dagger-android-processor:2.12',
+            daggerJavaProcessor : 'javax.annotation:jsr250-api:1.0',
+            daggerJavaInjector : 'javax.inject:javax.inject:1',
+
+            // RXJAVA 2
+            rxjava : 'io.reactivex.rxjava2:rxjava:2.1.6',
+            rxandroid : 'io.reactivex.rxjava2:rxandroid:2.0.1',
+            rxadapter : 'com.squareup.retrofit2:adapter-rxjava:2.0.2',
+            rxbinding : 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+            rxlifecyle : 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
+            rxlifecyleComponents : 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
+
+            // RX BINDING
+            rxBinding : 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+            rxBindingS : 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.0.0',
+
+            // RX PERMISSION
+            rxPermission : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar',
+
+            // FIREBASE AUTHENTICATION
+            firebaseAuth : "com.google.firebase:firebase-auth:11.8.0",
+
+            // TIMBER
+            timber : 'com.jakewharton.timber:timber:4.6.0'
+    ]
+
+    globalTestDependencies = [
+            junit : "junit:junit:4.12",
+            runner : "com.android.support.test:runner:1.0.1",
+            expresso : "com.android.support.test.espresso:espresso-core:3.0.1"
+    ]
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
